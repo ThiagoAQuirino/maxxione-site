@@ -1,3 +1,14 @@
+/* ========== SCROLL REVEAL ========== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ========== RESET & BASE ========== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -54,6 +65,13 @@ address { font-style: normal; }
 .section-tag { display: block; color: var(--yellow); font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; margin-bottom: .75rem; }
 .section-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; text-transform: uppercase; color: #fff; }
 
+/* ========== INPUT ERROR ========== */
+.input--error { border-color: #ef4444 !important; }
+.lead-form__error {
+  color: #f87171; font-size: .75rem; margin-top: .25rem;
+  display: none;
+}
+
 /* ========== URGENCY BAR ========== */
 .urgency-bar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -85,15 +103,16 @@ address { font-style: normal; }
 .header {
   position: fixed; top: var(--bar-h, 40px); left: 0; right: 0; z-index: 100;
   background: var(--dark); box-shadow: 0 2px 20px rgba(0,0,0,.4);
-  transition: top .3s;
+  transition: top .3s, box-shadow .3s;
 }
+.header--scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.7); }
 .header__inner { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
 .logo { display: flex; align-items: center; gap: .75rem; }
 .logo__img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
 .logo__text { font-size: 1.125rem; font-weight: 900; text-transform: uppercase; letter-spacing: .15em; color: #fff; }
 .nav { display: flex; align-items: center; gap: 1.5rem; }
 .nav__link { color: var(--gray); font-size: .8125rem; text-transform: uppercase; letter-spacing: .1em; transition: color .2s; }
-.nav__link:hover { color: var(--yellow); }
+.nav__link:hover, .nav__link--active { color: var(--yellow); }
 .header__cta { display: none; }
 .hamburger { display: flex; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; }
 .hamburger span { display: block; height: 2px; background: #fff; border-radius: 2px; transition: all .3s; }
